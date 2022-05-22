@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Card from '../Card';
 import './Country.scss';
 
@@ -47,6 +47,32 @@ const Country = ({
   error,
   ...props
 }) => {
+  const countries = useMemo(() => {
+    return data.map((dd, idx) => {
+      const cardProps = {
+        key: idx,
+        className: activeIndex === idx ? 'active' : '',
+        onClick: (e) => {
+          e.preventDefault();
+          setActiveIndex(idx);
+        },
+      };
+
+      return (
+        <Card {...cardProps}>
+          <div className="row g-0">
+            <div className="col-7">
+              <CardBody data={dd} />
+            </div>
+            <div className="col-5 d-flex align-items-center">
+              <Flag data={dd} />
+            </div>
+          </div>
+        </Card>
+      );
+    })
+  }, [data])
+
   if (error)
     return (
       <div className="countries px-3">
@@ -56,31 +82,7 @@ const Country = ({
 
   return (
     <div className="countries px-3 scrollbar" {...props}>
-      {!data.length
-        ? fallback
-        : data.map((dd, idx) => {
-            const cardProps = {
-              key: idx,
-              className: activeIndex === idx ? 'active' : '',
-              onClick: (e) => {
-                e.preventDefault();
-                setActiveIndex(idx);
-              },
-            };
-
-            return (
-              <Card {...cardProps}>
-                <div className="row g-0">
-                  <div className="col-7">
-                    <CardBody data={dd} />
-                  </div>
-                  <div className="col-5 d-flex align-items-center">
-                    <Flag data={dd} />
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
+      {!data.length ? fallback : countries }
     </div>
   );
 };
