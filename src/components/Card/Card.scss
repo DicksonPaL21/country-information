@@ -1,0 +1,11 @@
+.card {
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  -moz-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-width: 2px;
+
+  & > div {
+    min-height: 96px;
+  }
+}
