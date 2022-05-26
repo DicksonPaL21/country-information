@@ -172,7 +172,7 @@ function App() {
             <CardBody data={data[activeIndex]} />
           </Card>
           {activeIndex !== null && (
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end my-2">
               <a
                 target="_blank"
                 href={data[activeIndex].maps.googleMaps}
