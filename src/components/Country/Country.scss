@@ -32,40 +32,39 @@
 
     &:hover {
       position: relative;
-      &::after {
+      &::before {
         content: '';
         position: absolute;
         top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: rgb(255, 255, 255);
+        left: -100px;
+        width: 70px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: skewX(-30deg);
+        animation: slide 1s 0.3s linear;
+        -moz-animation: slide 1s 0.3s linear;
+        -webkit-animation: slide 1s 0.3s linear;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.13) 0%,
+          rgba(255, 255, 255, 0.13) 77%,
+          rgba(255, 255, 255, 0.5) 92%,
+          rgba(255, 255, 255, 0) 100%
+        );
         background: -moz-linear-gradient(
-          125deg,
-          rgba(255, 255, 255, 0) 25%,
-          rgba(255, 255, 255, 1) 45%,
-          rgba(255, 255, 255, 1) 55%,
-          rgba(255, 255, 255, 0) 75%
+          to right,
+          rgba(255, 255, 255, 0.13) 0%,
+          rgba(255, 255, 255, 0.13) 77%,
+          rgba(255, 255, 255, 0.5) 92%,
+          rgba(255, 255, 255, 0) 100%
         );
         background: -webkit-linear-gradient(
-          125deg,
-          rgba(255, 255, 255, 0) 25%,
-          rgba(255, 255, 255, 1) 45%,
-          rgba(255, 255, 255, 1) 55%,
-          rgba(255, 255, 255, 0) 75%
+          to right,
+          rgba(255, 255, 255, 0.13) 0%,
+          rgba(255, 255, 255, 0.13) 77%,
+          rgba(255, 255, 255, 0.5) 92%,
+          rgba(255, 255, 255, 0) 100%
         );
-        background: linear-gradient(
-          125deg,
-          rgba(255, 255, 255, 0) 25%,
-          rgba(255, 255, 255, 1) 45%,
-          rgba(255, 255, 255, 1) 55%,
-          rgba(255, 255, 255, 0) 75%
-        );
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
-        animation: flare-left-to-right 1s linear;
-        -moz-animation: flare-left-to-right 1s linear;
-        -webkit-animation: flare-left-to-right 1s linear;
-        opacity: 0;
       }
     }
 
@@ -97,14 +96,14 @@
   }
 }
 
-@keyframes flare-left-to-right {
+@keyframes slide {
   0% {
-    transform: translateX(-500px);
-    opacity: 0.8;
+    left: -100px;
+    top: 0;
   }
   100% {
-    transform: translateX(500px);
-    opacity: 0.8;
+    left: 290px;
+    top: 0;
   }
 }
 

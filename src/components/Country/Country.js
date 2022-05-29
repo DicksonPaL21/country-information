@@ -70,8 +70,8 @@ const Country = ({
           </div>
         </Card>
       );
-    })
-  }, [data])
+    });
+  }, [data, activeIndex]);
 
   if (error)
     return (
@@ -82,7 +82,7 @@ const Country = ({
 
   return (
     <div className="countries px-3 scrollbar" {...props}>
-      {!data.length ? fallback : countries }
+      {!data.length ? fallback : countries}
     </div>
   );
 };
