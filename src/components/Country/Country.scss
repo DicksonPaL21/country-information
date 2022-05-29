@@ -23,6 +23,7 @@
 
   .card {
     cursor: pointer;
+    position: relative;
     &.active {
       border-color: #0dcaf0;
       animation: zoom-out-in 0.15s linear;
@@ -30,41 +31,33 @@
       -webkit-animation: zoom-out-in 0.15s linear;
     }
 
+    &::after {
+      content: '';
+      position: absolute;
+      top: -350%;
+      left: -210%;
+      width: 200%;
+      height: 250%;
+      opacity: 0;
+      transform: rotate(30deg);
+      background: rgba(255, 255, 255, 0.13);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.13) 77%,
+        rgba(255, 255, 255, 0.5) 92%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
     &:hover {
-      position: relative;
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100px;
-        width: 70px;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: skewX(-30deg);
-        animation: slide 1s 0.3s linear;
-        -moz-animation: slide 1s 0.3s linear;
-        -webkit-animation: slide 1s 0.3s linear;
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.13) 0%,
-          rgba(255, 255, 255, 0.13) 77%,
-          rgba(255, 255, 255, 0.5) 92%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        background: -moz-linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.13) 0%,
-          rgba(255, 255, 255, 0.13) 77%,
-          rgba(255, 255, 255, 0.5) 92%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        background: -webkit-linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.13) 0%,
-          rgba(255, 255, 255, 0.13) 77%,
-          rgba(255, 255, 255, 0.5) 92%,
-          rgba(255, 255, 255, 0) 100%
-        );
+      &::after {
+        opacity: 1;
+        top: -60%;
+        left: -40%;
+        transition-property: left, top, opacity;
+        transition-duration: 0.7s, 0.7s, 0.15s;
+        transition-timing-function: ease-out;
       }
     }
 
