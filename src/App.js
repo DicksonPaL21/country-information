@@ -145,7 +145,7 @@ function App() {
 
   const detailsProps = {
     className: `details col-md-7 col-lg-8 col-xl-9 mt-md-4 px-0 px-md-3 ${
-      isSelectCountry ? 'active' : 'in-active'
+      isSelectCountry ? setTimeout(() => 'active', 1000) : 'in-active'
     }`,
   };
 
@@ -171,7 +171,7 @@ function App() {
           >
             <CardBody data={data[activeIndex]} />
           </Card>
-          {activeIndex !== null && setTimeout(() => (
+          {activeIndex !== null && (
             <div className="d-grid gap-2 d-md-flex justify-content-md-end my-2">
               <a
                 target="_blank"
@@ -187,7 +187,7 @@ function App() {
                 Back
               </button>
             </div>
-          ), 1000)}
+          )}
         </div>
       </div>
     </div>
