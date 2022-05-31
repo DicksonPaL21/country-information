@@ -171,7 +171,7 @@ function App() {
           >
             <CardBody data={data[activeIndex]} />
           </Card>
-          {activeIndex !== null && (
+          {activeIndex !== null && setTimeout(() => (
             <div className="d-grid gap-2 d-md-flex justify-content-md-end my-2">
               <a
                 target="_blank"
@@ -187,7 +187,7 @@ function App() {
                 Back
               </button>
             </div>
-          )}
+          ), 1000)}
         </div>
       </div>
     </div>
