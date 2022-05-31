@@ -161,7 +161,7 @@ function App() {
           <Country {...countryProps} />
         </div>
       </div>
-      {setTimeout(() => (<div {...detailsProps}>
+      {isSelectCountry && setTimeout(() => (<div {...detailsProps}>
         <div className="mt-3 mt-md-5">
           <Card
             style={{ minHeight: '448px' }}
