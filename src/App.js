@@ -189,7 +189,7 @@ function App() {
             </div>
           )}
         </div>
-      </div>), 1000)
+      </div>), 1000)}
     </div>
   );
 }
