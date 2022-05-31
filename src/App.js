@@ -145,7 +145,7 @@ function App() {
 
   const detailsProps = {
     className: `details col-md-7 col-lg-8 col-xl-9 mt-md-4 px-0 px-md-3 ${
-      isSelectCountry ? setTimeout(() => 'active', 1000) : 'in-active'
+      isSelectCountry ? 'active' : 'in-active'
     }`,
   };
 
@@ -161,7 +161,7 @@ function App() {
           <Country {...countryProps} />
         </div>
       </div>
-      <div {...detailsProps}>
+      {setTimeout(() => (<div {...detailsProps}>
         <div className="mt-3 mt-md-5">
           <Card
             style={{ minHeight: '448px' }}
@@ -189,7 +189,7 @@ function App() {
             </div>
           )}
         </div>
-      </div>
+      </div>), 1000)
     </div>
   );
 }
