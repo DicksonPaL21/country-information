@@ -1,10 +1,9 @@
-import React from 'react';
+'use client'
 
-const Spinner = ({ ...props }) => (
-  <div
-    className="d-flex justify-content-center align-items-center spinner"
-    {...props}
-  >
+import { Types } from './types'
+
+const Spinner = ({ ...props }: Types) => (
+  <div {...props}>
     <svg
       width="38"
       height="38"
@@ -29,6 +28,6 @@ const Spinner = ({ ...props }) => (
       </g>
     </svg>
   </div>
-);
+)
 
-export default Spinner;
+export default Spinner
