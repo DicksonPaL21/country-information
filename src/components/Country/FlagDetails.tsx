@@ -9,17 +9,17 @@ const FlagDetails = ({ data, ...props }: FlagDetailsTypes) => {
   } as React.CSSProperties
 
   return (
-    <div className="card-body text-light py-0 px-2" style={styles} {...props}>
-      <p className="card-text m-0" title="Country Code">
+    <div className="pr-1" style={styles} {...props}>
+      <p className="truncate" title="Country Code">
         {data.idd.root}
       </p>
-      <p className="card-text m-0" title="Country Name">
+      <p className="truncate" title="Country Name">
         {data.name.common}
       </p>
-      <p className="card-text m-0" title="Time Zones">
+      <p className="truncate" title="Time Zones">
         {data.timezones.join(', ')}
       </p>
-      <p className="card-text m-0" title="Calling Code">
+      <p className="truncate" title="Calling Code">
         {data.idd.suffixes
           ?.map((sfx) => [data.idd.root, sfx].join(''))
           .join(', ')}

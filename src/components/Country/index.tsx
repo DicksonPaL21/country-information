@@ -19,8 +19,8 @@ const Country = ({
   const countries = useMemo(() => {
     return data.map((dd: any, idx: number) => {
       const cardProps = {
-        key: idx,
-        className: activeIndex === idx ? 'active' : '',
+        // className: activeIndex === idx ? 'active' : '',
+        className: 'snap-start cursor-pointer',
         onClick: (e: React.MouseEvent<HTMLDivElement>) => {
           e.preventDefault()
           setActiveIndex(idx)
@@ -28,8 +28,8 @@ const Country = ({
       }
 
       return (
-        <Card {...cardProps}>
-          <div className="flex items-center gap-0">
+        <Card key={idx} {...cardProps} hoverable>
+          <div className="flex items-center">
             <div className="w-7/12">
               <FlagDetails data={dd} />
             </div>
@@ -44,13 +44,19 @@ const Country = ({
 
   if (error)
     return (
-      <div className={cn('countries px-3', className)}>
+      <div className={cn(className)}>
         <p className="not-found">- {error.message} -</p>
       </div>
     )
 
   return (
-    <div className={cn('countries px-3 scrollbar', className)} {...props}>
+    <div
+      className={cn(
+        'max-h-[85vh] overflow-y-auto scrollbar snap-y pr-2.5 -mr-2.5',
+        className
+      )}
+      {...props}
+    >
       {!data.length ? fallback : countries}
     </div>
   )
