@@ -1,5 +1,3 @@
-'use client'
-
 import { Types } from './types'
 
 const Spinner = ({ ...props }: Types) => (

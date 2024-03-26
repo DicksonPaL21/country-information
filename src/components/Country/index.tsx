@@ -1,26 +1,45 @@
-'use client'
-
 import Card from '@/components/Card'
 import cn from 'classnames'
 import React, { useMemo } from 'react'
+import Skeleton from 'react-loading-skeleton'
 import Flag from './Flag'
 import FlagDetails from './FlagDetails'
 import { Types } from './types'
+
+const FallbackLoader = ({ count = 1 }: { count?: number }) => {
+  return (
+    <>
+      {[...new Array(count)].map((_, idx) => (
+        <Card key={idx} className="!bg-transparent border-none">
+          <div className="flex items-center gap-4">
+            <div className="w-7/12">
+              <Skeleton count={4} />
+            </div>
+            <div className="w-5/12">
+              <Skeleton height={80} />
+            </div>
+          </div>
+        </Card>
+      ))}
+    </>
+  )
+}
 
 const Country = ({
   data,
   activeIndex,
   setActiveIndex,
-  fallback,
+  fallback = <FallbackLoader count={4} />,
   error,
   className,
   ...props
 }: Types) => {
   const countries = useMemo(() => {
-    return data.map((dd: any, idx: number) => {
+    return data?.map((dd: any, idx: number) => {
       const cardProps = {
-        // className: activeIndex === idx ? 'active' : '',
-        className: 'snap-start cursor-pointer',
+        className: cn('snap-start cursor-pointer', {
+          '!bg-zinc-800/30': activeIndex === idx,
+        }),
         onClick: (e: React.MouseEvent<HTMLDivElement>) => {
           e.preventDefault()
           setActiveIndex(idx)
@@ -29,7 +48,7 @@ const Country = ({
 
       return (
         <Card key={idx} {...cardProps} hoverable>
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <div className="w-7/12">
               <FlagDetails data={dd} />
             </div>
@@ -44,7 +63,7 @@ const Country = ({
 
   if (error)
     return (
-      <div className={cn(className)}>
+      <div className={cn(className)} {...props}>
         <p className="not-found">- {error.message} -</p>
       </div>
     )
@@ -57,7 +76,7 @@ const Country = ({
       )}
       {...props}
     >
-      {!data.length ? fallback : countries}
+      {!data?.length ? fallback : countries}
     </div>
   )
 }
