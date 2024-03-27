@@ -2,9 +2,9 @@
 
 import Card from '@/components/Card'
 import Country from '@/components/Country'
+import CountryDetails from '@/components/Country/CountryDetails'
 import { useState } from 'react'
 import { actions, useDebouncedEffect } from '../helpers'
-import CountryDetails from '@/components/Country/CountryDetails'
 
 export default function Page() {
   const [data, setData] = useState<any[]>([])
@@ -53,11 +53,7 @@ export default function Page() {
           </Card>
           {activeIndex !== -1 && (
             <div className="grid gap-2 md:flex md:justify-end my-4">
-              <a
-                target="_blank"
-                href={data[activeIndex]?.maps.googleMaps}
-                className="btn"
-              >
+              <a target="_blank" href={data[activeIndex]?.maps.googleMaps}>
                 View Map
               </a>
               <button

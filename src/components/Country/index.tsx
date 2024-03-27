@@ -37,7 +37,7 @@ const Country = ({
   const countries = useMemo(() => {
     return data?.map((dd: any, idx: number) => {
       const cardProps = {
-        className: cn('snap-start cursor-pointer', {
+        className: cn('country-card snap-start cursor-pointer', {
           '!bg-zinc-800/30': activeIndex === idx,
         }),
         onClick: (e: React.MouseEvent<HTMLDivElement>) => {
