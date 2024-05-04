@@ -3,8 +3,9 @@
 import Card from '@/components/Card'
 import Country from '@/components/Country'
 import CountryDetails from '@/components/Country/CountryDetails'
+import { useDebouncedEffect } from '@/hooks'
 import { useState } from 'react'
-import { actions, useDebouncedEffect } from '../helpers'
+import { actions } from '../helpers'
 
 export default function Page() {
   const [data, setData] = useState<any[]>([])
