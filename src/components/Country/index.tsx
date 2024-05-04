@@ -1,6 +1,7 @@
 import Card from '@/components/Card'
 import cn from 'classnames'
 import React, { useMemo } from 'react'
+import { InView } from 'react-intersection-observer'
 import Skeleton from 'react-loading-skeleton'
 import Flag from './Flag'
 import FlagDetails from './FlagDetails'
@@ -47,16 +48,20 @@ const Country = ({
       }
 
       return (
-        <Card key={idx} {...cardProps} hoverable>
-          <div className="flex items-center gap-2">
-            <div className="w-7/12">
-              <FlagDetails data={dd} />
-            </div>
-            <div className="w-5/12">
-              <Flag data={dd} />
-            </div>
-          </div>
-        </Card>
+        <InView key={idx}>
+          {({ inView, ref }) => (
+            <Card ref={ref} {...cardProps} hoverable>
+              <div className="flex items-center gap-4">
+                <div className="w-7/12">
+                  {inView ? <FlagDetails data={dd} /> : <Skeleton count={4} />}
+                </div>
+                <div className="w-5/12">
+                  {inView ? <Flag data={dd} /> : <Skeleton height={80} />}
+                </div>
+              </div>
+            </Card>
+          )}
+        </InView>
       )
     })
   }, [data, activeIndex])
