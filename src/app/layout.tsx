@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.scss'
+import { AppContextProvider } from './provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +30,9 @@ export default function RootLayout({ children }: RootLayoutTypes) {
         baseColor="rgb(39 39 42 / 0.3)"
         highlightColor="rgb(38 38 38 / var(--tw-border-opacity))"
       >
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <AppContextProvider>{children}</AppContextProvider>
+        </body>
       </SkeletonTheme>
     </html>
   )

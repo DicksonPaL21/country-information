@@ -1,9 +1,11 @@
-import React from 'react'
-import { CountryDetailsTypes } from './types'
+import { useAppContext } from '@/app/provider'
 import Flag from './Flag'
 
-const CountryDetails = ({ data }: CountryDetailsTypes) => {
-  if (!data) {
+const CountryDetails = () => {
+  const { data, activeIndex } = useAppContext()
+  const currentData = data[activeIndex]
+
+  if (!currentData) {
     return (
       <div className="grid place-items-center h-96">
         <h1 className="text-neutral-700 text-3xl">Please select country!</h1>
@@ -14,53 +16,53 @@ const CountryDetails = ({ data }: CountryDetailsTypes) => {
   const details = [
     {
       title: 'Country Name: ',
-      value: data.name.common,
+      value: currentData.name.common,
     },
     {
       title: 'Continents: ',
-      value: data.continents.join(', '),
+      value: currentData.continents.join(', '),
     },
     {
       title: 'Region: ',
-      value: data.region,
+      value: currentData.region,
     },
     {
       title: 'Currency: ',
-      value: data.currencies
-        ? Object.keys(data.currencies).map(
+      value: currentData.currencies
+        ? Object.keys(currentData.currencies).map(
             (currency) =>
-              `${data.currencies[currency].name} (${data.currencies[currency].symbol})`
+              `${currentData.currencies[currency].name} (${currentData.currencies[currency].symbol})`
           )
         : 'None',
     },
     {
       title: 'Languages: ',
-      value: data.languages
-        ? Object.keys(data.languages)
-            .map((language) => data.languages[language])
+      value: currentData.languages
+        ? Object.keys(currentData.languages)
+            .map((language) => currentData.languages[language])
             .join(', ')
         : 'None',
     },
     {
       title: 'Capital: ',
-      value: data.capital || 'None',
+      value: currentData.capital || 'None',
     },
     {
       title: 'Population: ',
-      value: data.population,
+      value: currentData.population,
     },
     {
       title: 'Time Zones: ',
-      value: data.timezones.join(', '),
+      value: currentData.timezones.join(', '),
     },
   ]
 
   return (
     <>
-      <h1 className="text-4xl mb-12">{data.name.official}</h1>
+      <h1 className="text-4xl mb-12">{currentData.name.official}</h1>
       <div className="lg:flex-row-reverse">
         <div className="lg:w-6/12 float-right">
-          <Flag data={data} />
+          <Flag data={currentData} />
         </div>
         <div className="lg:w-6/12 float-left space-y-2">
           {details.map((detail, idx) => (

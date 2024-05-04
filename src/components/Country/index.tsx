@@ -1,3 +1,4 @@
+import { useAppContext } from '@/app/provider'
 import Card from '@/components/Card'
 import cn from 'classnames'
 import React, { useMemo } from 'react'
@@ -27,14 +28,13 @@ const FallbackLoader = ({ count = 1 }: { count?: number }) => {
 }
 
 const Country = ({
-  data,
-  activeIndex,
-  setActiveIndex,
   fallback = <FallbackLoader count={4} />,
-  error,
   className,
   ...props
 }: Types) => {
+  const { data, error, activeIndex, setActiveIndex, setIsSelectCountry } =
+    useAppContext()
+
   const countries = useMemo(() => {
     return data?.map((dd: any, idx: number) => {
       const cardProps = {
@@ -44,6 +44,7 @@ const Country = ({
         onClick: (e: React.MouseEvent<HTMLDivElement>) => {
           e.preventDefault()
           setActiveIndex(idx)
+          setIsSelectCountry(true)
         },
       }
 

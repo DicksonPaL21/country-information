@@ -1,9 +1,5 @@
 export type Types = React.HTMLAttributes<HTMLDivElement> & {
-  data: any[]
-  activeIndex: number | null
-  setActiveIndex: (idx: number) => void
   fallback?: React.ReactNode
-  error?: { message: string }
 }
 
 // FLAGS
@@ -28,19 +24,4 @@ type FlagDetailsDataTypes = {
 
 export type FlagDetailsTypes = React.HTMLAttributes<HTMLDivElement> & {
   data: FlagDetailsDataTypes
-}
-
-// DETAILS
-export type CountryDetailsTypes = {
-  data: {
-    flags: { svg: string }
-    name: { common: string; official: string }
-    continents: string[]
-    region: string
-    currencies: { [key: string]: any }
-    languages: { [key: string]: string }
-    capital: string[]
-    population: number
-    timezones: string[]
-  }
 }
