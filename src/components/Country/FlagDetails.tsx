@@ -3,11 +3,17 @@ import { FlagDetailsTypes } from './types'
 
 const FlagDetails = ({ data, ...props }: FlagDetailsTypes) => {
   const styles = {
-    '--data-coat-of-arms': `url(${data.coatOfArms.svg})`,
+    // '--data-coat-of-arms': `url(${data.coatOfArms.svg})`,
   } as React.CSSProperties
 
   return (
-    <div className="pr-1" style={styles} {...props}>
+    <div
+      // data-coat-of-arms={data.coatOfArms.svg as string}
+      // className="pr-1 before:h-40 before:w-40 before:content-[''] before:bg-[var(--data-coat-of-arms)]"
+      className="pr-1"
+      style={styles}
+      {...props}
+    >
       <p className="truncate" title="Country Code">
         {data.idd.root}
       </p>

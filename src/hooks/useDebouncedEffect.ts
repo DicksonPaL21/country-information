@@ -7,6 +7,7 @@ export const useDebouncedEffect = (
   delay: number = 1000,
   deps: DependencyList = []
 ): void => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const callback = useCallback(effect, deps)
 
   useEffect(() => {

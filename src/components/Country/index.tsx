@@ -49,7 +49,7 @@ const Country = ({
       }
 
       return (
-        <InView key={idx}>
+        <InView key={idx} delay={100} trackVisibility triggerOnce>
           {({ inView, ref }) => (
             <Card ref={ref} {...cardProps} hoverable>
               <div className="flex items-center gap-4">

@@ -3,34 +3,35 @@
 import Card from '@/components/Card'
 import Country from '@/components/Country'
 import CountryDetails from '@/components/Country/CountryDetails'
+import Details from '@/components/Details'
+import SearchField from '@/components/SearchField'
+import { InView } from 'react-intersection-observer'
 import { useAppContext } from './provider'
 
 export default function Page() {
-  const { data, activeIndex, setIsSelectCountry } = useAppContext()
+  const { getAllCountries } = useAppContext()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <InView
+      as="main"
+      onChange={() => getAllCountries()}
+      className="flex min-h-screen flex-col items-center justify-between p-20"
+      triggerOnce
+    >
       <div className="max-w-5xl w-full items-start justify-between font-mono text-sm lg:flex lg:gap-5">
-        <Country className="lg:w-4/12 space-y-1" />
+        <div className="lg:w-4/12 flex flex-col gap-4">
+          <SearchField
+            onValueCallback={(val) => console.log('cc-value', val)}
+          />
+          <Country className="w-full space-y-1" />
+        </div>
         <div className="lg:w-8/12">
           <Card className="w-full grid">
             <CountryDetails />
           </Card>
-          {activeIndex !== -1 && (
-            <div className="grid gap-2 md:flex md:justify-end my-4">
-              <a target="_blank" href={data[activeIndex]?.maps.googleMaps}>
-                View Map
-              </a>
-              <button
-                className="lg:hidden"
-                onClick={() => setIsSelectCountry(false)}
-              >
-                Back
-              </button>
-            </div>
-          )}
+          <Details />
         </div>
       </div>
-    </main>
+    </InView>
   )
 }

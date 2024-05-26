@@ -20,5 +20,6 @@ export type AppContextProps = {
   setActiveIndex: Dispatch<SetStateAction<number>>
   isSelectCountry: boolean
   setIsSelectCountry: Dispatch<SetStateAction<boolean>>
+  getAllCountries: () => void
   getCountryByName: (name: string) => void
 }

@@ -25,3 +25,9 @@ type FlagDetailsDataTypes = {
 export type FlagDetailsTypes = React.HTMLAttributes<HTMLDivElement> & {
   data: FlagDetailsDataTypes
 }
+
+export type SearchFieldType = React.HTMLAttributes<HTMLInputElement> & {
+  value?: string
+  onValueCallback?: (value: string) => void
+  placeholder?: string
+}
