@@ -15,6 +15,7 @@ type DataProps = {
 
 export type AppContextProps = {
   data: DataProps[]
+  isLoading: boolean
   error?: { message: string }
   activeIndex: number
   setActiveIndex: Dispatch<SetStateAction<number>>

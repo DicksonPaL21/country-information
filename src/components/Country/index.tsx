@@ -1,6 +1,6 @@
 import { useAppContext } from '@/app/provider'
 import Card from '@/components/Card'
-import cn from 'classnames'
+import { cn } from '@/utils/formatters/cn'
 import React, { useMemo } from 'react'
 import { InView } from 'react-intersection-observer'
 import Skeleton from 'react-loading-skeleton'
@@ -32,8 +32,14 @@ const Country = ({
   className,
   ...props
 }: Types) => {
-  const { data, error, activeIndex, setActiveIndex, setIsSelectCountry } =
-    useAppContext()
+  const {
+    data,
+    isLoading,
+    error,
+    activeIndex,
+    setActiveIndex,
+    setIsSelectCountry,
+  } = useAppContext()
 
   const countries = useMemo(() => {
     return data?.map((dd: any, idx: number) => {
@@ -70,19 +76,19 @@ const Country = ({
   if (error)
     return (
       <div className={cn(className)} {...props}>
-        <p className="not-found">- {error.message} -</p>
+        <p className="text-center text-xs">- {error.message} -</p>
       </div>
     )
 
   return (
     <div
       className={cn(
-        'max-h-[85vh] overflow-y-auto scrollbar snap-y pr-2.5 -mr-2.5',
+        'max-h-[calc(100vh-11rem-38px)] overflow-y-auto scrollbar snap-y pr-2.5 -mr-2.5',
         className
       )}
       {...props}
     >
-      {!data?.length ? fallback : countries}
+      {isLoading ? fallback : countries}
     </div>
   )
 }

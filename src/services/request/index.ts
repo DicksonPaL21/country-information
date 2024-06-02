@@ -7,24 +7,31 @@ import {
 
 export async function GET({
   url,
-  query,
+  query = '',
   onSuccess,
   onError,
+  onFetching,
 }: {
   url: string
   query?: string
   onSuccess?: SuccessCallbackFn
   onError?: ErrorCallbackFn
+  onFetching?: (state: boolean) => void
 }): Promise<any> {
   try {
+    onFetching?.(true)
     const BASE_URL = process.env.NEXT_PUBLIC_REACT_APP_END_POINT
     const response = await fetch(`${BASE_URL}/${url}?${query}`)
+    onFetching?.(false)
 
     const data = await response.json()
 
-    onSuccess?.(data as SuccessResponseType)
+    if (response.ok) {
+      onSuccess?.(data as SuccessResponseType)
+    } else onError?.(data as ErrorResponseType)
   } catch (error) {
     onError?.(error as ErrorResponseType)
+    onFetching?.(false)
   }
 }
 

@@ -1,4 +1,5 @@
 import { useAppContext } from '@/app/provider'
+import { MapIcon } from '../icons/Map'
 import Flag from './Flag'
 
 const CountryDetails = () => {
@@ -8,7 +9,10 @@ const CountryDetails = () => {
   if (!currentData) {
     return (
       <div className="grid place-items-center h-96">
-        <h1 className="text-neutral-700 text-3xl">Please select country!</h1>
+        <div className="flex flex-col items-center">
+          <MapIcon className="size-32 stroke-neutral-700" />
+          <h1 className="text-neutral-700 text-3xl">Please select country!</h1>
+        </div>
       </div>
     )
   }

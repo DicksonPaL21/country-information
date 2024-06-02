@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import { cn } from '@/utils/formatters/cn'
 import { FlagTypes } from './types'
 
 const Flag = ({ data, className, ...props }: FlagTypes) => {

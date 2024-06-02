@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import { cn } from '@/utils/formatters/cn'
 import { forwardRef } from 'react'
 import { Types } from './types'
 

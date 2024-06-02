@@ -9,7 +9,7 @@ import { InView } from 'react-intersection-observer'
 import { useAppContext } from './provider'
 
 export default function Page() {
-  const { getAllCountries } = useAppContext()
+  const { getAllCountries, getCountryByName } = useAppContext()
 
   return (
     <InView
@@ -19,9 +19,11 @@ export default function Page() {
       triggerOnce
     >
       <div className="max-w-5xl w-full items-start justify-between font-mono text-sm lg:flex lg:gap-5">
-        <div className="lg:w-4/12 flex flex-col gap-4">
+        <div className="lg:w-4/12 flex flex-col gap-4 -mr-2.5">
           <SearchField
-            onValueCallback={(val) => console.log('cc-value', val)}
+            onValueCallback={(value) =>
+              !!value ? getCountryByName(value) : getAllCountries()
+            }
           />
           <Country className="w-full space-y-1" />
         </div>
