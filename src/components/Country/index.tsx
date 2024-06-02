@@ -75,7 +75,7 @@ const Country = ({
         </InView>
       )
     })
-  }, [data, activeCountry?.name.common])
+  }, [data, activeCountry?.name.common, setActiveCountry, setIsSelectCountry])
 
   if (error)
     return (

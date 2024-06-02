@@ -35,7 +35,8 @@ type FlagDataTypes = {
   name: CountryTypes['name']
 }
 
-export type FlagTypes = Omit<React.ComponentProps<'img'>, 'src' | 'alt'> & {
+export type FlagTypes = {
+  className?: string
   data: FlagDataTypes
 }
 
