@@ -1,6 +1,6 @@
-export type SuccessResponseType = {
-  [key: string]: any
-}
+import { CountryTypes } from "@/components/Country/types"
+
+export type SuccessResponseType = CountryTypes[] & {}
 
 export type SuccessCallbackFn = (data: SuccessResponseType) => void
 

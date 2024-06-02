@@ -3,10 +3,9 @@ import { MapIcon } from '../icons/Map'
 import Flag from './Flag'
 
 const CountryDetails = () => {
-  const { data, activeIndex } = useAppContext()
-  const currentData = data[activeIndex]
+  const { activeCountry } = useAppContext()
 
-  if (!currentData) {
+  if (!activeCountry) {
     return (
       <div className="grid place-items-center h-96">
         <div className="flex flex-col items-center">
@@ -20,53 +19,53 @@ const CountryDetails = () => {
   const details = [
     {
       title: 'Country Name: ',
-      value: currentData.name.common,
+      value: activeCountry.name.common,
     },
     {
       title: 'Continents: ',
-      value: currentData.continents.join(', '),
+      value: activeCountry.continents.join(', '),
     },
     {
       title: 'Region: ',
-      value: currentData.region,
+      value: activeCountry.region,
     },
     {
       title: 'Currency: ',
-      value: currentData.currencies
-        ? Object.keys(currentData.currencies).map(
+      value: activeCountry.currencies
+        ? Object.keys(activeCountry.currencies).map(
             (currency) =>
-              `${currentData.currencies[currency].name} (${currentData.currencies[currency].symbol})`
+              `${activeCountry.currencies[currency].name} (${activeCountry.currencies[currency].symbol})`
           )
         : 'None',
     },
     {
       title: 'Languages: ',
-      value: currentData.languages
-        ? Object.keys(currentData.languages)
-            .map((language) => currentData.languages[language])
+      value: activeCountry.languages
+        ? Object.keys(activeCountry.languages)
+            .map((language) => activeCountry.languages[language])
             .join(', ')
         : 'None',
     },
     {
       title: 'Capital: ',
-      value: currentData.capital || 'None',
+      value: activeCountry.capital || 'None',
     },
     {
       title: 'Population: ',
-      value: currentData.population,
+      value: activeCountry.population,
     },
     {
       title: 'Time Zones: ',
-      value: currentData.timezones.join(', '),
+      value: activeCountry.timezones.join(', '),
     },
   ]
 
   return (
     <>
-      <h1 className="text-4xl mb-12">{currentData.name.official}</h1>
+      <h1 className="text-4xl mb-12">{activeCountry.name.official}</h1>
       <div className="lg:flex-row-reverse">
         <div className="lg:w-6/12 float-right">
-          <Flag data={currentData} />
+          <Flag data={activeCountry} />
         </div>
         <div className="lg:w-6/12 float-left space-y-2">
           {details.map((detail, idx) => (

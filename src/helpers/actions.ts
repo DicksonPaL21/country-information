@@ -10,8 +10,7 @@ export const getCountries = (
   onSuccess: SuccessCallbackFn,
   onError: ErrorCallbackFn,
   onFetching?: (state: boolean) => void,
-  query?: string,
-  signal?: AbortSignal
+  query?: string
 ) => {
   req.GET({
     url: 'all',
@@ -19,7 +18,6 @@ export const getCountries = (
     onSuccess,
     onError,
     onFetching,
-    signal,
   })
 }
 
@@ -28,8 +26,7 @@ export const getCountryByName = (
   onSuccess: SuccessCallbackFn,
   onError: ErrorCallbackFn,
   onFetching?: (state: boolean) => void,
-  query?: string,
-  signal?: AbortSignal
+  query?: string
 ) => {
   req.GET({
     url: `name/${name}`,
@@ -37,6 +34,5 @@ export const getCountryByName = (
     onSuccess,
     onError,
     onFetching,
-    signal,
   })
 }

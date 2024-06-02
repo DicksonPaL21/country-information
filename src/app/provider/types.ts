@@ -1,24 +1,12 @@
+import { CountryTypes } from '@/components/Country/types'
 import { Dispatch, SetStateAction } from 'react'
 
-type DataProps = {
-  flags: { svg: string }
-  name: { common: string; official: string }
-  continents: string[]
-  region: string
-  maps: { [key: string]: any }
-  currencies: { [key: string]: any }
-  languages: { [key: string]: string }
-  capital: string[]
-  population: number
-  timezones: string[]
-}
-
 export type AppContextProps = {
-  data: DataProps[]
+  data: CountryTypes[]
   isLoading: boolean
   error?: { message: string }
-  activeIndex: number
-  setActiveIndex: Dispatch<SetStateAction<number>>
+  activeCountry: any
+  setActiveCountry: Dispatch<SetStateAction<any>>
   isSelectCountry: boolean
   setIsSelectCountry: Dispatch<SetStateAction<boolean>>
   getAllCountries: () => void

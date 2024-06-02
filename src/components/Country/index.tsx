@@ -6,7 +6,7 @@ import { InView } from 'react-intersection-observer'
 import Skeleton from 'react-loading-skeleton'
 import Flag from './Flag'
 import FlagDetails from './FlagDetails'
-import { Types } from './types'
+import { CountryTypes, Types } from './types'
 
 const FallbackLoader = ({ count = 1 }: { count?: number }) => {
   return (
@@ -36,20 +36,20 @@ const Country = ({
     data,
     isLoading,
     error,
-    activeIndex,
-    setActiveIndex,
+    activeCountry,
+    setActiveCountry,
     setIsSelectCountry,
   } = useAppContext()
 
   const countries = useMemo(() => {
-    return data?.map((dd: any, idx: number) => {
+    return data?.map((country: CountryTypes, idx: number) => {
       const cardProps = {
         className: cn('country-card snap-start cursor-pointer', {
-          '!bg-zinc-800/30': activeIndex === idx,
+          '!bg-zinc-800/30': activeCountry?.name.common === country.name.common,
         }),
         onClick: (e: React.MouseEvent<HTMLDivElement>) => {
           e.preventDefault()
-          setActiveIndex(idx)
+          setActiveCountry(country)
           setIsSelectCountry(true)
         },
       }
@@ -60,10 +60,14 @@ const Country = ({
             <Card ref={ref} {...cardProps} hoverable>
               <div className="flex items-center gap-4">
                 <div className="w-7/12">
-                  {inView ? <FlagDetails data={dd} /> : <Skeleton count={4} />}
+                  {inView ? (
+                    <FlagDetails data={country} />
+                  ) : (
+                    <Skeleton count={4} />
+                  )}
                 </div>
                 <div className="w-5/12">
-                  {inView ? <Flag data={dd} /> : <Skeleton height={80} />}
+                  {inView ? <Flag data={country} /> : <Skeleton height={80} />}
                 </div>
               </div>
             </Card>
@@ -71,7 +75,7 @@ const Country = ({
         </InView>
       )
     })
-  }, [data, activeIndex])
+  }, [data, activeCountry?.name.common])
 
   if (error)
     return (

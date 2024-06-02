@@ -1,7 +1,7 @@
 import { cn } from '@/utils/formatters/cn'
 import React from 'react'
 import { useDebounceCallback } from 'usehooks-ts'
-import { SearchFieldType } from '../Country/types'
+import { SearchFieldTypes } from '../Country/types'
 import { SearchIcon } from '../icons/Search'
 
 const SearchField = ({
@@ -9,7 +9,7 @@ const SearchField = ({
   onValueCallback,
   placeholder,
   ...props
-}: SearchFieldType) => {
+}: SearchFieldTypes) => {
   const callback = useDebounceCallback((v) => onValueCallback?.(v), 300)
 
   const spanProps = {

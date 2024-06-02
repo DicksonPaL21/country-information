@@ -1,7 +1,11 @@
 'use client'
 
+import { CountryTypes } from '@/components/Country/types'
 import { actions } from '@/helpers'
-import { ErrorResponseType } from '@/services/request/types'
+import {
+  ErrorResponseType,
+  SuccessResponseType,
+} from '@/services/request/types'
 import {
   createContext,
   useCallback,
@@ -15,8 +19,8 @@ const AppContext = createContext<AppContextProps>({
   data: [],
   isLoading: true,
   error: undefined,
-  activeIndex: -1,
-  setActiveIndex: () => {},
+  activeCountry: undefined,
+  setActiveCountry: () => {},
   isSelectCountry: false,
   setIsSelectCountry: () => {},
   getAllCountries: () => {},
@@ -25,10 +29,12 @@ const AppContext = createContext<AppContextProps>({
 export const useAppContext = () => useContext(AppContext)
 
 export function AppContextProvider({ ...props }: any) {
-  const [data, setData] = useState<any[]>([])
+  const [data, setData] = useState<CountryTypes[]>([])
   const [isLoading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<ErrorResponseType | boolean>(false)
-  const [activeIndex, setActiveIndex] = useState<number>(-1)
+  const [activeCountry, setActiveCountry] = useState<CountryTypes | undefined>(
+    undefined
+  )
   const [isSelectCountry, setIsSelectCountry] = useState(false)
 
   const query = useMemo(() => {
@@ -39,12 +45,12 @@ export function AppContextProvider({ ...props }: any) {
   }, [])
 
   const getAllCountries = useCallback(() => {
-    const onSuccess = (res: any) => {
+    const onSuccess = (res: SuccessResponseType) => {
       setError(false)
-      setData(res)
+      setData(res as CountryTypes[])
     }
-    const onError = (res: any) => {
-      setData([])
+    const onError = (res: ErrorResponseType) => {
+      setData([] as CountryTypes[])
       setError(res)
     }
     const onFetching = (state: boolean) => {
@@ -56,12 +62,12 @@ export function AppContextProvider({ ...props }: any) {
 
   const getCountryByName = useCallback(
     (name: string) => {
-      const onSuccess = (res: any) => {
+      const onSuccess = (res: SuccessResponseType) => {
         setError(false)
-        setData(res)
+        setData(res as CountryTypes[])
       }
-      const onError = (res: any) => {
-        setData([])
+      const onError = (res: ErrorResponseType) => {
+        setData([] as CountryTypes[])
         setError(res)
       }
       const onFetching = (state: boolean) => {
@@ -84,8 +90,8 @@ export function AppContextProvider({ ...props }: any) {
       data,
       isLoading,
       error,
-      activeIndex,
-      setActiveIndex,
+      activeCountry,
+      setActiveCountry,
       isSelectCountry,
       setIsSelectCountry,
       getAllCountries,
@@ -95,7 +101,7 @@ export function AppContextProvider({ ...props }: any) {
       data,
       isLoading,
       error,
-      activeIndex,
+      activeCountry,
       isSelectCountry,
       getAllCountries,
       getCountryByName,
