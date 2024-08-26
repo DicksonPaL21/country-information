@@ -6,17 +6,18 @@ import CountryDetails from '@/components/Country/CountryDetails'
 import Details from '@/components/Details'
 import SearchField from '@/components/SearchField'
 import { InView } from 'react-intersection-observer'
+import { useDebounceCallback } from 'usehooks-ts'
 import { useAppContext } from './provider'
 
 export default function Page() {
   const { getAllCountries, getCountryByName } = useAppContext()
 
-  const onValueCallbackFn = (value: string) => {
+  const onValueCallbackFn = useDebounceCallback((value: string) => {
     if (!!value) {
       return getCountryByName(value)
     }
     return getAllCountries()
-  }
+  }, 500)
 
   return (
     <InView
