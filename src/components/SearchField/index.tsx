@@ -23,8 +23,8 @@ const SearchField = ({
       'focus:outline-none focus:ring focus:ring-blue-500/50'
     ),
     placeholder: placeholder ?? 'Search',
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      callback(e.target.value as string)
+    onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => {
+      callback((e.target as HTMLInputElement).value as string)
     },
     value,
   }
@@ -32,7 +32,7 @@ const SearchField = ({
   return (
     <div className="relative w-full">
       <span {...spanProps}>
-        <SearchIcon className='stroke-gray-400' />
+        <SearchIcon className="stroke-gray-400" />
       </span>
       <input {...inputProps} />
     </div>
