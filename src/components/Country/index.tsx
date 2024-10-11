@@ -87,7 +87,7 @@ const Country = ({
   return (
     <div
       className={cn(
-        'max-h-[calc(100vh-11rem-38px)] overflow-y-auto scrollbar snap-y pr-2.5 -mr-2.5',
+        'max-h-[calc(100vh-10rem-244px)] overflow-y-auto scrollbar snap-y pr-2.5 -mr-2.5',
         className
       )}
       {...props}

@@ -1,5 +1,6 @@
 'use client'
 
+import Ads from '@/components/Ads'
 import Card from '@/components/Card'
 import Country from '@/components/Country'
 import CountryDetails from '@/components/Country/CountryDetails'
@@ -20,24 +21,39 @@ export default function Page() {
   }, 500)
 
   return (
-    <InView
-      as="main"
-      onChange={() => getAllCountries()}
-      className="flex min-h-screen flex-col items-center justify-between p-20"
-      triggerOnce
-    >
-      <div className="max-w-5xl w-full items-start justify-between font-mono text-sm lg:flex lg:gap-5">
-        <div className="lg:w-4/12 flex flex-col gap-4 -mr-2.5">
-          <SearchField onValueCallback={onValueCallbackFn} />
-          <Country className="w-full space-y-1" />
-        </div>
-        <div className="lg:w-8/12">
-          <Card className="w-full grid">
-            <CountryDetails />
-          </Card>
-          <Details />
-        </div>
+    <>
+      <div className="flex justify-center my-4">
+        <Ads className="w-[760px] h-[122px]" />
+        <Ads className="w-[760px] h-[122px]" />
       </div>
-    </InView>
+      <main className="px-20 py-5 w-full flex justify-center gap-9">
+        <Ads className="w-[300px] h-[600px]" />
+        <InView
+          onChange={() => getAllCountries()}
+          className="w-full max-w-5xl items-start justify-between font-mono text-sm lg:flex lg:gap-5"
+          triggerOnce
+        >
+          <div className="lg:w-4/12 flex flex-col gap-4 -mr-2.5">
+            <SearchField onValueCallback={onValueCallbackFn} />
+            <Country className="w-full h-full space-y-1" />
+          </div>
+          <div className="lg:w-8/12">
+            <Card className="w-full grid">
+              <CountryDetails />
+            </Card>
+            <Details />
+            <div className="flex justify-center mt-9">
+              <Ads className="w-[332px] h-[282px]" />
+              <Ads className="w-[332px] h-[282px]" />
+            </div>
+          </div>
+        </InView>
+        <Ads className="w-[300px] h-[600px]" />
+      </main>
+      <div className="flex justify-center my-4">
+        <Ads className="w-[760px] h-[122px]" />
+        <Ads className="w-[760px] h-[122px]" />
+      </div>
+    </>
   )
 }

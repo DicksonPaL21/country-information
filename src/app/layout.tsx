@@ -36,6 +36,11 @@ export default function RootLayout({ children }: RootLayoutTypes) {
       >
         <body className={inter.className}>
           <AppContextProvider>{children}</AppContextProvider>
+          <Script
+            dangerouslySetInnerHTML={{
+              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+            }}
+          />
         </body>
       </SkeletonTheme>
     </html>
