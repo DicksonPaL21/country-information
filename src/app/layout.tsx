@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
-import Script from 'next/script'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.scss'
@@ -11,9 +10,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Country Information',
   description: 'Powered by REST Countries API v3.1',
-  other: {
-    'google-adsense-account': 'ca-pub-5215573300733761',
-  },
 }
 
 export const viewport: Viewport = {
