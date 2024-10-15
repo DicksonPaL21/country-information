@@ -36,6 +36,12 @@ export default function RootLayout({ children }: RootLayoutTypes) {
       >
         <body className={inter.className}>
           <AppContextProvider>{children}</AppContextProvider>
+          <Script
+            id="google-adsense"
+            dangerouslySetInnerHTML={{
+              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+            }}
+          />
         </body>
       </SkeletonTheme>
     </html>
