@@ -1,21 +1,8 @@
-/* eslint-disable */
-
-import { forwardRef, useEffect } from 'react'
+import { forwardRef } from 'react'
 import { Types } from './types'
 
 const Ads = forwardRef<HTMLDivElement, Types>(
   ({ className, ...props }, ref) => {
-    useEffect(() => {
-      try {
-        if (window?.adsbygoogle) {
-          window.adsbygoogle = window?.adsbygoogle || []
-          window?.adsbygoogle?.push({})
-        }
-      } catch (e) {
-        console.error('Error initializing ads', e)
-      }
-    }, [])
-
     return (
       <div ref={ref} className={className} {...props}>
         <ins

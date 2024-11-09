@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.scss'
@@ -35,6 +36,12 @@ export default function RootLayout({ children }: RootLayoutTypes) {
       >
         <body className={inter.className}>
           <AppContextProvider>{children}</AppContextProvider>
+          <Script
+            id="google-adsense"
+            dangerouslySetInnerHTML={{
+              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+            }}
+          />
         </body>
       </SkeletonTheme>
     </html>
