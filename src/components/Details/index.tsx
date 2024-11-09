@@ -8,7 +8,7 @@ const Details = () => {
   }
 
   return (
-    <div className="grid gap-2 md:flex md:justify-end my-4">
+    <div className="my-4 grid gap-2 md:flex md:justify-end">
       <a target="_blank" href={activeCountry?.maps.googleMaps}>
         View Map
       </a>

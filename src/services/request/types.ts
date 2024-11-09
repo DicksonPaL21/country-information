@@ -1,4 +1,4 @@
-import { CountryTypes } from "@/components/Country/types"
+import { CountryTypes } from '@/components/Country/types'
 
 export type SuccessResponseType = CountryTypes[] & {}
 

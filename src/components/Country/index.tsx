@@ -12,7 +12,7 @@ const FallbackLoader = ({ count = 1 }: { count?: number }) => {
   return (
     <>
       {[...new Array(count)].map((_, idx) => (
-        <Card key={idx} className="!bg-transparent border-none">
+        <Card key={idx} className="border-none !bg-transparent">
           <div className="flex items-center gap-4">
             <div className="w-7/12">
               <Skeleton count={4} />
@@ -87,7 +87,7 @@ const Country = ({
   return (
     <div
       className={cn(
-        'max-h-[calc(100vh-10rem-244px)] overflow-y-auto scrollbar snap-y pr-2.5 -mr-2.5',
+        'scrollbar -mr-2.5 max-h-[calc(100vh-10rem-244px)] snap-y overflow-y-auto pr-2.5',
         className
       )}
       {...props}

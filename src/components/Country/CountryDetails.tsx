@@ -7,10 +7,10 @@ const CountryDetails = () => {
 
   if (!activeCountry) {
     return (
-      <div className="grid place-items-center h-96">
+      <div className="grid h-96 place-items-center">
         <div className="flex flex-col items-center">
           <MapIcon className="size-32 stroke-neutral-700" />
-          <h1 className="text-neutral-700 text-3xl">Please select country!</h1>
+          <h1 className="text-3xl text-neutral-700">Please select country!</h1>
         </div>
       </div>
     )
@@ -62,12 +62,12 @@ const CountryDetails = () => {
 
   return (
     <>
-      <h1 className="text-4xl mb-12">{activeCountry.name.official}</h1>
+      <h1 className="mb-12 text-4xl">{activeCountry.name.official}</h1>
       <div className="lg:flex-row-reverse">
-        <div className="lg:w-6/12 float-right">
+        <div className="float-right lg:w-6/12">
           <Flag data={activeCountry} />
         </div>
-        <div className="lg:w-6/12 float-left space-y-2">
+        <div className="float-left space-y-2 lg:w-6/12">
           {details.map((detail, idx) => (
             <p key={idx}>
               <span>{detail.title}</span>

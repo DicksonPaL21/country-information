@@ -22,37 +22,37 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex justify-center my-4">
-        <Ads className="w-[760px] h-[122px]" />
-        <Ads className="w-[760px] h-[122px]" />
+      <div className="my-4 flex justify-center">
+        <Ads className="h-[122px] w-[760px]" />
+        <Ads className="h-[122px] w-[760px]" />
       </div>
-      <main className="px-20 py-5 w-full flex justify-center gap-9">
-        <Ads className="w-[300px] h-[600px]" />
+      <main className="flex w-full justify-center gap-9 px-20 py-5">
+        <Ads className="h-[600px] w-[300px]" />
         <InView
           onChange={() => getAllCountries()}
           className="w-full max-w-5xl items-start justify-between font-mono text-sm lg:flex lg:gap-5"
           triggerOnce
         >
-          <div className="lg:w-4/12 flex flex-col gap-4 -mr-2.5">
+          <div className="-mr-2.5 flex flex-col gap-4 lg:w-4/12">
             <SearchField onValueCallback={onValueCallbackFn} />
-            <Country className="w-full h-full space-y-1" />
+            <Country className="h-full w-full space-y-1" />
           </div>
           <div className="lg:w-8/12">
-            <Card className="w-full grid">
+            <Card className="grid w-full">
               <CountryDetails />
             </Card>
             <Details />
-            <div className="flex justify-center mt-9">
-              <Ads className="w-[332px] h-[282px]" />
-              <Ads className="w-[332px] h-[282px]" />
+            <div className="mt-9 flex justify-center">
+              <Ads className="h-[282px] w-[332px]" />
+              <Ads className="h-[282px] w-[332px]" />
             </div>
           </div>
         </InView>
-        <Ads className="w-[300px] h-[600px]" />
+        <Ads className="h-[600px] w-[300px]" />
       </main>
-      <div className="flex justify-center my-4">
-        <Ads className="w-[760px] h-[122px]" />
-        <Ads className="w-[760px] h-[122px]" />
+      <div className="my-4 flex justify-center">
+        <Ads className="h-[122px] w-[760px]" />
+        <Ads className="h-[122px] w-[760px]" />
       </div>
     </>
   )
