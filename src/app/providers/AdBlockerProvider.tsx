@@ -11,12 +11,14 @@ import {
 import { AdBlockerContextProps } from './types'
 
 const AdBlockerContext = createContext<AdBlockerContextProps>({
-  adBlockDetected: false,
+  adBlockDetected: undefined,
 })
 export const useAdBlockerContext = () => useContext(AdBlockerContext)
 
 export function AdBlockerProvider({ ...props }: any) {
-  const [adBlockDetected, setAdBlockDetected] = useState(false)
+  const [adBlockDetected, setAdBlockDetected] = useState<boolean | undefined>(
+    undefined
+  )
 
   const checkAdBlockerCallback = useCallback(() => {
     // Create a dummy ad element
@@ -29,7 +31,8 @@ export function AdBlockerProvider({ ...props }: any) {
     // Check if ad element is blocked
     if (adTest.offsetHeight === 0 || adTest.offsetWidth === 0) {
       setAdBlockDetected(true)
-    }
+    } else setAdBlockDetected(false)
+
     // Remove the test element
     document.body.removeChild(adTest)
   }, [setAdBlockDetected])

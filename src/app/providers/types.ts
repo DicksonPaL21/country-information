@@ -14,5 +14,5 @@ export type AppContextProps = {
 }
 
 export type AdBlockerContextProps = {
-  adBlockDetected: boolean
+  adBlockDetected: boolean | undefined
 }

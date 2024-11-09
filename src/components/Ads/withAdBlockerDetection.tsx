@@ -7,7 +7,7 @@ const withAdBlockerDetection = <P extends object>(
   const WithAdBlockerDetection: React.FC<P> = (props) => {
     const { adBlockDetected } = useAdBlockerContext()
 
-    if (adBlockDetected) {
+    if (adBlockDetected === undefined || adBlockDetected === true) {
       return <></>
     }
 
