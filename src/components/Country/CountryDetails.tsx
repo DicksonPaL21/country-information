@@ -1,4 +1,4 @@
-import { useAppContext } from '@/app/provider'
+import { useAppContext } from '@/app/providers'
 import { MapIcon } from '../icons/Map'
 import Flag from './Flag'
 

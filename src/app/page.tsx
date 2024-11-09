@@ -8,7 +8,7 @@ import Details from '@/components/Details'
 import SearchField from '@/components/SearchField'
 import { InView } from 'react-intersection-observer'
 import { useDebounceCallback } from 'usehooks-ts'
-import { useAppContext } from './provider'
+import { useAppContext } from './providers'
 
 export default function Page() {
   const { getAllCountries, getCountryByName } = useAppContext()

@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.scss'
-import { AppContextProvider } from './provider'
+import { AppContextProvider } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 

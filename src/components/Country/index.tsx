@@ -1,4 +1,4 @@
-import { useAppContext } from '@/app/provider'
+import { useAppContext } from '@/app/providers'
 import Card from '@/components/Card'
 import { cn } from '@/utils/formatters/cn'
 import React, { useMemo } from 'react'

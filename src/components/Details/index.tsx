@@ -1,4 +1,4 @@
-import { useAppContext } from '@/app/provider'
+import { useAppContext } from '@/app/providers'
 
 const Details = () => {
   const { activeCountry, setIsSelectCountry } = useAppContext()
