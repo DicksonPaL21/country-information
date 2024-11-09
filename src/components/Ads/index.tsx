@@ -7,7 +7,7 @@ const Ads = forwardRef<HTMLDivElement, Types>(
       try {
         if (window?.adsbygoogle) {
           window.adsbygoogle = window?.adsbygoogle || []
-          window.adsbygoogle.push({})
+          window?.adsbygoogle?.push({})
         }
       } catch (e) {
         console.error('Error initializing ads', e)
