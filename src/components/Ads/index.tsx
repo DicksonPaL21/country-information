@@ -2,6 +2,7 @@ import useAdContentCheck from '@/hooks/useAdContentCheck'
 import { forwardRef, useEffect } from 'react'
 import { mergeRefs } from 'react-merge-refs'
 import { Types } from './types'
+import withAdBlockerDetection from './withAdBlockerDetection'
 
 const Ads = forwardRef<HTMLDivElement, Types>(
   ({ className, ...props }, ref) => {
@@ -50,4 +51,4 @@ const Ads = forwardRef<HTMLDivElement, Types>(
 
 Ads.displayName = 'Ads'
 
-export default Ads
+export default withAdBlockerDetection(Ads)

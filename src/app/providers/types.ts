@@ -12,3 +12,7 @@ export type AppContextProps = {
   getAllCountries: () => void
   getCountryByName: (name: string) => void
 }
+
+export type AdBlockerContextProps = {
+  adBlockDetected: boolean
+}

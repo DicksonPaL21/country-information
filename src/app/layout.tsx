@@ -1,11 +1,11 @@
-import DetectAdBlocker from '@/components/DetectAdBlocker'
+import AdBlockerAlert from '@/components/AdBlockerAlert'
 import { cn } from '@/utils/formatters/cn'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import './globals.scss'
-import { AppContextProvider } from './providers'
+import { AdBlockerProvider, AppContextProvider } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -36,8 +36,12 @@ export default function RootLayout({ children }: RootLayoutTypes) {
         highlightColor="rgb(38 38 38 / var(--tw-border-opacity))"
       >
         <body className={cn('flex min-h-svh flex-col', inter.className)}>
-          <DetectAdBlocker />
-          <AppContextProvider>{children}</AppContextProvider>
+          <AppContextProvider>
+            <AdBlockerProvider>
+              <AdBlockerAlert />
+              {children}
+            </AdBlockerProvider>
+          </AppContextProvider>
         </body>
       </SkeletonTheme>
     </html>
