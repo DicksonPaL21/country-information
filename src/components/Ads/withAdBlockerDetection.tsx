@@ -1,10 +1,10 @@
 import { useAdBlockerContext } from '@/app/providers'
-import { ComponentType } from 'react'
+import React from 'react'
 
 const withAdBlockerDetection = <P extends object>(
-  WrappedComponent: ComponentType<P>
+  WrappedComponent: React.ComponentType<P>
 ) => {
-  return (props: P) => {
+  const WithAdBlockerDetection: React.FC<P> = (props) => {
     const { adBlockDetected } = useAdBlockerContext()
 
     if (adBlockDetected) {
@@ -13,6 +13,8 @@ const withAdBlockerDetection = <P extends object>(
 
     return <WrappedComponent {...(props as P)} />
   }
+
+  return WithAdBlockerDetection
 }
 
 export default withAdBlockerDetection
