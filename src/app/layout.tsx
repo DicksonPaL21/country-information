@@ -1,4 +1,5 @@
 import AdBlockerAlert from '@/components/AdBlockerAlert'
+import BmcWidget from '@/components/widget/Bmc'
 import { cn } from '@/utils/formatters/cn'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: RootLayoutTypes) {
               {children}
             </AdBlockerProvider>
           </AppContextProvider>
+          <BmcWidget />
         </body>
       </SkeletonTheme>
     </html>
