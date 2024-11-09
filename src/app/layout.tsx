@@ -1,3 +1,5 @@
+import DetectAdBlocker from '@/components/DetectAdBlocker'
+import { cn } from '@/utils/formatters/cn'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
@@ -33,7 +35,8 @@ export default function RootLayout({ children }: RootLayoutTypes) {
         baseColor="rgb(39 39 42 / 0.3)"
         highlightColor="rgb(38 38 38 / var(--tw-border-opacity))"
       >
-        <body className={inter.className}>
+        <body className={cn('flex min-h-svh flex-col', inter.className)}>
+          <DetectAdBlocker />
           <AppContextProvider>{children}</AppContextProvider>
         </body>
       </SkeletonTheme>
