@@ -1,7 +1,8 @@
 import { useAppContext } from '@/app/providers'
 import Card from '@/components/Card'
 import { cn } from '@/utils/formatters/cn'
-import React, { useMemo } from 'react'
+import FlatList from 'flatlist-react'
+import React, { useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 import Skeleton from 'react-loading-skeleton'
 import Flag from './Flag'
@@ -35,14 +36,13 @@ const Country = ({
   const {
     data,
     isLoading,
-    error,
     activeCountry,
     setActiveCountry,
     setIsSelectCountry,
   } = useAppContext()
 
-  const countries = useMemo(() => {
-    return data?.map((country: CountryTypes, idx: number) => {
+  const RenderCountry = useCallback(
+    (country: CountryTypes) => {
       const cardProps = {
         className: cn('country-card snap-start cursor-pointer', {
           '!bg-zinc-800/30': activeCountry?.name.common === country.name.common,
@@ -55,7 +55,12 @@ const Country = ({
       }
 
       return (
-        <InView key={idx} delay={100} trackVisibility triggerOnce>
+        <InView
+          key={country.name.official}
+          delay={100}
+          trackVisibility
+          triggerOnce
+        >
           {({ inView, ref }) => (
             <Card ref={ref} {...cardProps} hoverable>
               <div className="flex items-center gap-4">
@@ -74,25 +79,29 @@ const Country = ({
           )}
         </InView>
       )
-    })
-  }, [data, activeCountry?.name.common, setActiveCountry, setIsSelectCountry])
-
-  if (error)
-    return (
-      <div className={cn(className)} {...props}>
-        <p className="text-center text-xs">- {error.message} -</p>
-      </div>
-    )
+    },
+    [data, activeCountry?.name.common, setActiveCountry, setIsSelectCountry]
+  )
 
   return (
     <div
       className={cn(
-        'scrollbar -mr-2.5 max-h-[calc(100vh-10rem-244px)] snap-y overflow-y-auto pr-2.5',
+        'scrollbar -mr-2.5 max-h-[calc(100vh-10rem-244px)] w-full snap-y overflow-y-auto pr-2.5',
         className
       )}
       {...props}
     >
-      {isLoading ? fallback : countries}
+      {isLoading ? (
+        fallback
+      ) : (
+        <FlatList
+          list={data}
+          renderItem={RenderCountry}
+          renderWhenEmpty={() => (
+            <p className="text-center text-xs">- List is empty -</p>
+          )}
+        />
+      )}
     </div>
   )
 }

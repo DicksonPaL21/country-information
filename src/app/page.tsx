@@ -33,11 +33,11 @@ export default function Page() {
           className="w-full max-w-5xl items-start justify-between font-mono text-sm lg:flex lg:gap-5"
           triggerOnce
         >
-          <div className="-mr-2.5 flex flex-col gap-4 lg:w-4/12">
+          <div className="-mr-2.5 flex shrink-0 flex-col gap-4 lg:w-4/12">
             <SearchField onValueCallback={onValueCallbackFn} />
-            <Country className="h-full w-full space-y-1" />
+            <Country className="h-full space-y-1" />
           </div>
-          <div className="lg:w-8/12">
+          <div className="w-full">
             <Card className="grid w-full">
               <CountryDetails />
             </Card>

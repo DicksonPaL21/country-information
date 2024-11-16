@@ -12,7 +12,7 @@ const SearchField = ({
   ...props
 }: SearchFieldTypes) => {
   const [_value, _setValue] = useValue(value ?? '', {
-    forward: onValueCallback,
+    forward: (_thisValue) => !!_thisValue && onValueCallback?.(_thisValue),
   })
 
   const searchProps = {
@@ -24,7 +24,10 @@ const SearchField = ({
     className: cn('absolute top-[7px] right-[7px] cursor-pointer hidden', {
       block: _value,
     }),
-    onClick: () => _setValue(''),
+    onClick: () => {
+      _setValue('')
+      onValueCallback?.('')
+    },
   }
 
   const inputProps = {
